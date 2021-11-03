@@ -1,11 +1,12 @@
 const axios = require("axios");  // intermediary library between clients and servers
 const cheerio = require("cheerio");  // inpect tool, webscraping library
 
-class Webscraper {
+module.exports = class Webscraper {
   constructor() {
-    this.map = Map();
+    this.map = Map();  // every object of webscraper class will have a map attribute
   }
 
+  // main function adds and sorts the html values into your map function
   async main() {  
     let response = await axios.get(userInput);
     let page = response.data;  // don't have to type in html
@@ -24,20 +25,15 @@ class Webscraper {
         this.map.set(($(this).text), c);
       }
     });
-  
-    for (const [key, value] of this.map.entries()) {
-      let arr1 = [...Array(this.map.size()).keys()];
-      let arr2 = [...Array(this.map.size()).keys()];
-      arr1.push(key);
-      arr2.push(value);
-    }
+  }
+
+  getKeys() {
+    let keys = [...this.map.keys()];
+    return keys;
+  }
+
+  getValues() {
+    let values = [...this.map.values()];
+    return values;
   }
 }
-
-function getInput() {
-    const userInput = document.getElementById("user_input").value;
-    let word = main();
-}
-
-const sentInput = document.getElementById("send1");
-sentInput.addEventListener("click", getInput)

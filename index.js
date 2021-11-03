@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()  // create an application to set up our server
-const webscrape = require("/webscraper.js");
+const webscrape = require("./webscrape.js");
 
 
 app.set('view engine', 'ejs')
