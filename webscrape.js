@@ -3,7 +3,7 @@ const cheerio = require("cheerio");  // inpect tool, webscraping library
 
 module.exports = class Webscraper {
   constructor() {
-    this.map = Map();  // every object of webscraper class will have a map attribute
+    this.map = new Map();  // every object of webscraper class will have a map attribute
   }
 
   // main function adds and sorts the html values into your map function

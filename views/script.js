@@ -1,3 +1,5 @@
+import * as axios from './node_modules/axios';
+const yourUrlVariable = "https://theDesiredLink.com";
 let tds = document.querySelectorAll('#table1 td');
 let td = Array.from(tds);
 for(let i = 0; i < td.length; i++) {
@@ -7,3 +9,8 @@ for(let i = 0; i < td.length; i++) {
         td[i].innerHTML = "n";
     }
 }
+
+let urlInput = document.getElementById("user_input").value;
+
+const response = await axios.post("/", {URL: urlInput});
+console.log(response.data);

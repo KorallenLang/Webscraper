@@ -1,16 +1,25 @@
-const express = require('express')
-const app = express()  // create an application to set up our server
-const webscrape = require("./webscrape.js");
+const express = require('express');
+const app = express();  // create an application to set up our server
+const path = require('path');
 
+app.set('view engine', 'ejs');
 
-app.set('view engine', 'ejs')
+app.use(express.static(path.join(__dirname, 'views')));
 
 app.get('/', (req, res) => {
-    // res.download("index.js")
-    res.render("page")
-    // res.status(500).json({ message: 'Error'})  // displays on client server; web browser
-})
+    res.render("page");
+});
 
-app.use(express.static("views"));
+app.use(express.json());
 
-app.listen(3000)  // makes our server run and listens on port 3000 for requests
+app.post("/", function (req, res) {
+    const url = req.body.URL; // take object from request body
+    const dictionary = webscraper.scrapeUrl(url);
+    res.json(dictionary);
+});
+
+app.use('webscrape.js', express.static(__dirname, {index: 'webscrape.js'}));
+
+app.use(express.json());
+
+app.listen(3000);  // makes our server run and listens on port 3000 for requests
