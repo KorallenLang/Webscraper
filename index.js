@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();  // create an application to set up our server
 const path = require('path');
+const Webscraper = require('./webscrape');
+const webscraper = new Webscraper();
 
 app.set('view engine', 'ejs');
 
@@ -12,9 +14,9 @@ app.get('/', (req, res) => {
 
 app.use(express.json());
 
-app.post("/", function (req, res) {
+app.post("/scrape", function (req, res) {
     const url = req.body.URL; // take object from request body
-    const dictionary = webscraper.scrapeUrl(url);
+    const dictionary = webscraper.scrape(url);
     res.json(dictionary);
 });
 

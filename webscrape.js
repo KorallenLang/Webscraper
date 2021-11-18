@@ -7,33 +7,35 @@ module.exports = class Webscraper {
   }
 
   // main function adds and sorts the html values into your map function
-  async main() {  
+  async scrape(userInput) {  
     let response = await axios.get(userInput);
-    let page = response.data;  // don't have to type in html
+    let page = response.data;
     let $ = cheerio.load(page, {
       xml: {
         normalizeWhitespace: true,
       },
     });
   
-    $("*").each(function () {  // what does non text containing elements return when .text() is called
+    $("*").each(function () {
       if ((this.map.get($(this).text)) === undefined) {
         let c = 1;
         this.map.set(($(this).text), c);
       } else {
-        let c = this.map.get($(this).text);
+        let c = this.map.get($(this).text) + 1;
         this.map.set(($(this).text), c);
       }
     });
+
+    return this.map;
   }
 
-  getKeys() {
-    let keys = [...this.map.keys()];
-    return keys;
-  }
+  // getKeys() {
+  //   let keys = [...this.map.keys()];
+  //   return keys;
+  // }
 
-  getValues() {
-    let values = [...this.map.values()];
-    return values;
-  }
+  // getValues() {
+  //   let values = [...this.map.values()];
+  //   return values;
+  // }
 }

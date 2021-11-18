@@ -1,5 +1,3 @@
-import * as axios from './node_modules/axios';
-const yourUrlVariable = "https://theDesiredLink.com";
 let tds = document.querySelectorAll('#table1 td');
 let td = Array.from(tds);
 for(let i = 0; i < td.length; i++) {
@@ -10,7 +8,9 @@ for(let i = 0; i < td.length; i++) {
     }
 }
 
-let urlInput = document.getElementById("user_input").value;
-
-const response = await axios.post("/", {URL: urlInput});
-console.log(response.data);
+// let urlInput = document.getElementById("user_input").value;
+async function webscrape(inputUrl) {
+    const response = await axios.post("/scrape", {URL: inputUrl});
+    console.log(response.data);
+}
+webscrape("https://en.wikipedia.org/wiki/Penguin");
