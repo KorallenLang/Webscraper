@@ -13,4 +13,5 @@ async function webscrape(inputUrl) {
     const response = await axios.post("/scrape", {URL: inputUrl});
     console.log(response.data);
 }
+
 webscrape("https://en.wikipedia.org/wiki/Penguin");

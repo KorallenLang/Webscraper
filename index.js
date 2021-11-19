@@ -14,9 +14,9 @@ app.get('/', (req, res) => {
 
 app.use(express.json());
 
-app.post("/scrape", function (req, res) {
+app.post("/scrape", async function (req, res) {
     const url = req.body.URL; // take object from request body
-    const dictionary = webscraper.scrape(url);
+    const dictionary = await webscraper.scrape(url);
     res.json(dictionary);
 });
 
