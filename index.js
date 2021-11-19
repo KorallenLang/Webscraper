@@ -16,8 +16,12 @@ app.use(express.json());
 
 app.post("/scrape", async function (req, res) {
     const url = req.body.URL; // take object from request body
-    const dictionary = await webscraper.scrape(url);
-    res.json(dictionary);
+    try {
+        const dictionary = await webscraper.scrape(url);
+        res.json(dictionary);
+    } catch (error) {
+        console.error(error);
+    }
 });
 
 app.use('webscrape.js', express.static(__dirname, {index: 'webscrape.js'}));

@@ -17,22 +17,30 @@ module.exports = class Webscraper {
       },
     });
 
-    // $("*").each(function () {
-    //   let arr = ((map.get($(this).text()))).split();
-    //   arr.forEach(x => {
-    //     if ((map.get($(this).text())))
-    //   });
-    // });
-  
     $("*").each(function () {
-      if ((map.get($(this).text())) === undefined) {
-        let c = 1;
-        map.set(($(this).text()), c);
-      } else {
-        let c = map.get($(this).text()) + 1;
-        map.set(($(this).text()), c);
+      if ($(this).text != undefined) {
+        let arr = ($(this).text()).split(" ");
+        for(let i = 0; i < arr.length; i++) {
+          if ((map.get(arr[i])) === undefined) {
+            let c = 1;
+            map.set((arr[i]), c);
+          } else {
+            let c = map.get(arr[i]) + 1;
+            map.set((arr[i]), c);
+          }
+        }
       }
     });
+  
+    // $("*").each(function () {
+    //   if ((map.get($(this).text())) === undefined) {
+    //     let c = 1;
+    //     map.set(($(this).text()), c);
+    //   } else {
+    //     let c = map.get($(this).text()) + 1;
+    //     map.set(($(this).text()), c);
+    //   }
+    // });
     console.log([...map.keys()]);
     
     this.map = map;
