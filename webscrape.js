@@ -33,7 +33,7 @@ module.exports = class Webscraper {
         map.set(($(this).text()), c);
       }
     });
-    map.forEach(x => console.log(x));
+    console.log([...map.keys()]);
     
     this.map = map;
     return map;
