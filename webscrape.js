@@ -41,7 +41,12 @@ module.exports = class Webscraper {
     //     map.set(($(this).text()), c);
     //   }
     // });
-    console.log([...map.keys()]);
+    // sort by value
+    const mapSort1 = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
+    for(let i = 0; i < 5; i++) {
+      console.log(mapSort1.get(i));
+    }
+    // console.log([...map.keys()]);
     
     this.map = map;
     return map;
