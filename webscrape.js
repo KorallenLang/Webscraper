@@ -2,10 +2,6 @@ const axios = require("axios");  // intermediary library between clients and ser
 const cheerio = require("cheerio");  // inpect tool, webscraping library
 
 module.exports = class Webscraper {
-  constructor() {
-    this.map = new Map();  // every object of webscraper class will have a map attribute
-  }
-
   // main function adds and sorts the html values into your map function
   async scrape(userInput) {
     const map = new Map();  
@@ -18,7 +14,7 @@ module.exports = class Webscraper {
     });
 
     $("*").each(function () {
-      if ($(this).text != undefined) {
+      if ($(this).text() != undefined) {
         let arr = ($(this).text()).split(" ");
         for(let i = 0; i < arr.length; i++) {
           if ((map.get(arr[i])) === undefined) {
@@ -32,33 +28,11 @@ module.exports = class Webscraper {
       }
     });
   
-    // $("*").each(function () {
-    //   if ((map.get($(this).text())) === undefined) {
-    //     let c = 1;
-    //     map.set(($(this).text()), c);
-    //   } else {
-    //     let c = map.get($(this).text()) + 1;
-    //     map.set(($(this).text()), c);
-    //   }
-    // });
-    // sort by value
     const mapSort1 = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
-    for(let i = 0; i < 5; i++) {
-      console.log(mapSort1.get(i));
-    }
-    // console.log([...map.keys()]);
+    let keyArr = [...mapSort1.keys()];
+    let valArr = [...mapSort1.values()];
+
     
-    this.map = map;
-    return map;
+    return { words: keyArr, frequencies: valArr};
   }
-
-  // getKeys() {
-  //   let keys = [...this.map.keys()];
-  //   return keys;
-  // }
-
-  // getValues() {
-  //   let values = [...this.map.values()];
-  //   return values;
-  // }
 }
