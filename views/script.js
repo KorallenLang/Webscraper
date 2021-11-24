@@ -1,3 +1,6 @@
+function clearText(target) {
+    target.value = "";
+}
 let tds = document.querySelectorAll('#table1 td');
 let td = Array.from(tds);
 let button = document.getElementById("send1");
