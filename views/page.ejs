@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Webscraper</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                font-family : 'Courier New', Courier, monospace;
+                background-color: powderblue;
+                text-align: center;
+                padding: 0;
+                margin: 0;
+            }
+            .centeredTable {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            footer {
+                background-color: rgb(185, 184, 98);
+                color:rgb(124, 118, 10);
+                padding-top: 50px;
+                width: 100%;
+                bottom: 0;
+                position: fixed;
+            }
+            .braggingRights {
+                margin-left: 0;
+                margin-bottom: 0;
+                text-align: left;
+            }
+        </style>
     </head>
     <body>
+        <h2>Webscraper</h2>
         <p>Scrape the web and create a dictionary of the popular words!</p>
         <label for="user_input">Enter website url : </label>
         <input type="text" name="user_input" id="user_input" onfocus="clearText(this)">
         <button id="send1">Go!</button>
-        <table id="table1">
+        <table id="table1" class="centeredTable">
             <thead>
                 <tr>
                     <th colspan=2>Top 5 Used Words in Website</th>
@@ -41,7 +72,9 @@
                 </tr>
             </tbody>
         </table>
-        <!-- Allow for axios variable -->
+        <footer>
+            <p class="braggingRights">Created by a brilliant child</p>
+        </footer>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="script.js"></script>
     </body>

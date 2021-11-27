@@ -1,8 +1,7 @@
-const axios = require("axios");  // intermediary library between clients and servers
-const cheerio = require("cheerio");  // inpect tool, webscraping library
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 module.exports = class Webscraper {
-  // main function adds and sorts the html values into your map function
   async scrape(userInput) {
     const map = new Map();  
     let response = await axios.get(userInput);
@@ -27,12 +26,10 @@ module.exports = class Webscraper {
         }
       }
     });
-  
+
     const mapSort1 = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
     let keyArr = [...mapSort1.keys()];
     let valArr = [...mapSort1.values()];
-
-    
     return { words: keyArr, frequencies: valArr};
   }
 }
