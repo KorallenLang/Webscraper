@@ -16,7 +16,10 @@ module.exports = class Webscraper {
       if ($(this).text() != undefined) {
         let arr = ($(this).text()).split(" ");
         for(let i = 0; i < arr.length; i++) {
-          if ((map.get(arr[i])) === undefined) {
+          if (arr[i] === '') {
+            continue;
+          }
+          if ((map.get(arr[i])) === undefined && arr[i].length !== 0) {
             let c = 1;
             map.set((arr[i]), c);
           } else {

@@ -2,12 +2,9 @@ let tds = document.querySelectorAll('#table1 td');
 let td = Array.from(tds);
 let button = document.getElementById("send1");
 
-function clearText(target) {
-    target.value = "";
-}
-
 async function onClick() {
     let urlInput = document.getElementById("user_input").value;
+    document.getElementById('user_input').value = '';
     const response = await axios.post("/scrape", {URL: urlInput});
     let obj1 = response.data;
     for(let i = 0; i < td.length; i++) {

@@ -14,8 +14,9 @@ app.get('/', (req, res) => {
 
 app.use(express.json());
 
+// takes url and returns a dictionary object
 app.post("/scrape", async function (req, res) {
-    const url = req.body.URL; // take object from request body
+    const url = req.body.URL;
     try {
         const dictionary = await webscraper.scrape(url);
         res.json(dictionary);
@@ -26,6 +27,6 @@ app.post("/scrape", async function (req, res) {
 
 app.use('webscrape.js', express.static(__dirname, {index: 'webscrape.js'}));
 
-app.use(express.json());
+// app.use(express.json());
 
 app.listen(3000);  // makes our server run and listens on port 3000 for requests
