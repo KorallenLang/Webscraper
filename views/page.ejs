@@ -39,37 +39,32 @@
         <label for="user_input">Enter website url : </label>
         <input type="text" name="user_input" id="user_input" onfocus="this.value=''">
         <button id="send1">Go!</button>
+        <br>
         <table id="table1" class="centeredTable">
             <thead>
                 <tr>
-                    <th colspan=2>Top 5 Used Words in Website</th>
+                    <label for="options">Choose the Number of Words to Dsiplay:</label>
+
+                    <select name="options" id="options">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <button id="send2" style="margin-left:2%">Submit</button>
                 </tr>
                 <tr>
                     <th>Key</th>
                     <th>Value</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tbody id="tbody1">
             </tbody>
         </table>
         <footer>
